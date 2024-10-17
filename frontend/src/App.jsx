@@ -6,6 +6,8 @@ import CodeEditor from './pages/CodeEditor';
 // import TeacherDashboard from './pages/TeacherDashboard';
 import StudentDashboard from './pages/student';
 import { LabSection } from './components/labs/LabSection';
+import TeacherDashboard from './pages/Teacher';
+import CodeEdit from './pages/code';
 function App() {
   return (
     <BrowserRouter>
@@ -13,11 +15,13 @@ function App() {
         <Route path="/" >
             <Route index element={<Home />} />
             <Route path='CodeEditor' element={<CodeEditor/>}/>
+            {/* <Route path='CodeEdit' element={<CodeEditor/>}/> */}
             <Route path="studentDashboard" element={<StudentDashboard/>} >
                 <Route path='dashboard' element={<StudentDashboard/>}/>
                 <Route path='labs' element={<LabSection/>}/>
                 <Route path='assignment' element={<StudentDashboard/>}/>
             </Route>
+            <Route path="teacherDashboard" element={<TeacherDashboard/>}/>
             {/* Updated path for StudentDashboard */}
             {/* <Route path="teacherDashboard/*" element={<TeacherDashboard />} /> Updated path for StudentDashboard */}
         </Route>
