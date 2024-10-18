@@ -8,6 +8,7 @@ import StudentDashboard from './pages/student';
 import { LabSection } from './components/labs/LabSection';
 import TeacherDashboard from './pages/Teacher';
 import CodeEdit from './pages/code';
+import Login from './pages/Login';
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +23,9 @@ function App() {
                 <Route path='assignment' element={<StudentDashboard/>}/>
             </Route>
             <Route path="teacherDashboard" element={<TeacherDashboard/>}/>
+            <Route path="students">
+                <Route path='signin' element={<Login/>}/>
+            </Route>
             {/* Updated path for StudentDashboard */}
             {/* <Route path="teacherDashboard/*" element={<TeacherDashboard />} /> Updated path for StudentDashboard */}
         </Route>

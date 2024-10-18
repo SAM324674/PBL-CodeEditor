@@ -34,4 +34,4 @@ app.use('/students',studentRoutes);
 app.use('/teachers',teacherRoutes);
 app.use('/codeEditor',codeRunRoutes);
 //listen to port 
-app.listen(port,()=>console.log(`Server running at port http://localhost:${port} successfully`))
+app.listen(port,()=>console.log(`Server Started : http://localhost:${port}/`))
