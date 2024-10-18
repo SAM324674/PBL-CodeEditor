@@ -6,6 +6,7 @@ const app=express();
 const port=8000;
 const studentRoutes=require('./Routes/studentRoutes');
 const teacherRoutes=require('./Routes/teacherRoutes');
+const codeRunRoutes=require('./Routes/codeRunRoutes');
 require ('dotenv').config();
 //Middleware
 app.use(cors());
@@ -17,11 +18,13 @@ mongoose.connect(process.env.MONGO_URL)
 .catch(err=>console.error("failed to connect to MongoDB",err));
 
 
+const corsOptions ={
+    origin:'http://localhost:5173', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
 app.use(
-    cors({
-        origin:'http://localhost:5173/',
-        credentials:true,
-    })
+    cors(corsOptions)
 )
 //define routes
 // app.get('/',(req,res)=>{
@@ -29,5 +32,6 @@ app.use(
 // })
 app.use('/students',studentRoutes);
 app.use('/teachers',teacherRoutes);
+app.use('/codeEditor',codeRunRoutes);
 //listen to port 
-app.listen(port,()=>console.log(`Server running at port http://localhost:${port} successfully`))
+app.listen(port,()=>console.log(`Server Started : http://localhost:${port}/`))
