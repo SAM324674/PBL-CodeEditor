@@ -20,6 +20,12 @@ const studentSchema =new mongoose.Schema({
         required:true,
         
     },
+    teacherId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'teachers',
+        default:null
+        
+    },
     salt:{
         type:String,
     }
