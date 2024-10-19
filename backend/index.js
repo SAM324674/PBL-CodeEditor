@@ -21,7 +21,8 @@ mongoose.connect(process.env.MONGO_URL)
 const corsOptions ={
     origin:'http://localhost:5173', 
     credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
+    optionSuccessStatus:200,
+    allowedHeaders:['Authorization','Content-Type']
 }
 app.use(
     cors(corsOptions)

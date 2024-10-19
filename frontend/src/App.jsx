@@ -2,14 +2,14 @@ import { useState } from 'react'
 import { BrowserRouter, Routes , Route } from 'react-router-dom';
 import Home from './pages/Home';
 import CodeEditor from './pages/CodeEditor';
-import StudentDashboard from './pages/student';
+// import StudentDashboard from './pages/student';
 import { LabSection } from './components/labs/LabSection';
 import TeacherDashboard from './pages/Teacher';
 import CodeEdit from './pages/code';
 import Login from './pages/Login';
 // import Logout from './components/Logout'
 import PrivateRoute from './components/PrivateRoute';
-import StudentLayout from './pages/student';
+import StudentLayout from './pages/Student';
 import Dashboard from './components/Dashboard';
 function App() {
   return (

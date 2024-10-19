@@ -19,8 +19,9 @@ const Login = () => {
                 password
             });
             console.log("token:",response.data.token);
-            setToken(response.data.token);
-            localStorage.setItem('token',token);
+            // setToken(response.data.token);
+            //saving token in local storage
+            localStorage.setItem('token',response.data.token);
             navigate('/students/dashboard');
         }catch(error){
             console.error(`Error submitting login details:${error}`);
