@@ -1,9 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
+    // const [isAuthenticate,setIsAuthenticate]=useState(false);
+    const [token,setToken]=useState();
+    const navigate=useNavigate();
+    //for logout
+    
     //for submitting the login  
     const handleSubmit=async(e)=>{
         e.preventDefault()
@@ -12,7 +18,10 @@ const Login = () => {
                 email,
                 password
             });
-            console.log(response.data);
+            console.log("token:",response.data.token);
+            setToken(response.data.token);
+            localStorage.setItem('token',token);
+            navigate('/students/dashboard');
         }catch(error){
             console.error(`Error submitting login details:${error}`);
         }

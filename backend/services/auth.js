@@ -8,7 +8,7 @@ function createTokenForUser(user){
         email:user.email
     
     };
-    const token=JWT.sign(payload,jwtSecret);
+    const token=JWT.sign(payload,jwtSecret,{expiresIn:'2h'});
     return token;
 }
 

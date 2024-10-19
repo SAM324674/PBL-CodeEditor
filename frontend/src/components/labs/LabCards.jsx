@@ -10,7 +10,7 @@ export const LabCards = () => {
               <h1 className='text-2xl font-bold'>Lab1:Basics</h1>
               <p>12 questions</p>
             </div>
-            <Link to='/CodeEditor' className='border flex items-center justify-center'>
+            <Link to='/students/labs/CodeEditor' className='border flex items-center justify-center'>
                 <button className='bg-black flex items-center justify-center text-white w-[95%] p-3 rounded-lg '>Start Lab
                 <MdKeyboardArrowRight />
                 </button>

@@ -1,9 +1,14 @@
 import React from 'react'
-import { Router,Link } from 'react-router-dom';
+import { Router,Link,useNavigate, replace } from 'react-router-dom';
 import { MdDashboard } from "react-icons/md";
 import { CgNotes } from "react-icons/cg";
 import { IoIosCode } from "react-icons/io";
 const SideSection = () => {
+    const navigate=useNavigate();
+    const handleLogout=()=>{
+        localStorage.removeItem('token');
+        navigate('/students/signin',{replace:true})
+    }
     const navIcons={
         "Icons":[
             <MdDashboard />,
@@ -12,7 +17,7 @@ const SideSection = () => {
         ],
             
         "Contents":["Dashboard","Assignments","Lab"],
-        "Links":['','assignments','labs']
+        "Links":['/students/dashboard', '/students/assignment', '/students/labs']
     }
   return (
     <>
@@ -27,6 +32,7 @@ const SideSection = () => {
                     </div> 
                 </Link>)
                 }
+                <button className='p-3 text-white border' onClick={handleLogout}>Logout</button>
                 
                 
             </section>
