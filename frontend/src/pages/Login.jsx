@@ -1,32 +1,50 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('')
-    const [password, setPassword] = useState('');
+    const [email,setEmail]=useState('');
+    const [password,setPassword]=useState('');
+    // const [isAuthenticate,setIsAuthenticate]=useState(false);
+    // const [token,setToken]=useState();
+    const navigate=useNavigate();
+    const [role,setRole]=useState('');
     const [signup, setSignup] = useState(false);
-    const navigate = useNavigate();
     //for logout
-
+    const location=useLocation();
+    // console.log(location.pathname);
+    
+   useEffect(()=>{
+        if(location.pathname==='/students/signin'){
+            setRole('students');
+        }
+        else if(location.pathname==='/teachers/signin'){
+            setRole('teachers');
+        }
+        else{
+            setRole('admin');
+        }
+        
+   },[location.pathname]);
     //for submitting the login  
-    const handleSubmit = async (e) => {
+    const handleSubmit=async(e)=>{
         e.preventDefault()
-        try {
-            const response = await axios.post('http://localhost:8000/students/signin', {
+        try{
+            const response=await axios.post(`http://localhost:8000/${role}/signin`,{
                 email,
                 password
             });
-            console.log("token:", response.data.token);
+            console.log("token:",response.data.token);
             // setToken(response.data.token);
             //saving token in local storage
-            localStorage.setItem('token', response.data.token);
-            navigate('/students/dashboard');
-        } catch (error) {
+            localStorage.setItem('role',role);
+            localStorage.setItem('token',response.data.token);
+            navigate(`/${role}/dashboard`);
+        }catch(error){
             console.error(`Error submitting login details:${error}`);
         }
     };
+
     return (
         <>
             <section className="bg-gray-50 dark:bg-gray-900">
@@ -63,13 +81,14 @@ const Login = () => {
                                     <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                                 </div>}
 
-                                <button type="submit" onClick={(e) => handleSubmit(e)} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                                <button type="submit" onClick={handleSubmit} className="w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">{signup ? <>Already Have an account ?</> : <>Don’t have an account yet? </>}
                                     <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500" onClick={() => setSignup(!signup)}>
                                         {signup ? <>Login</> : <>Sign up</>}
 
                                     </a>
                                 </p>
+
                             </form>
                         </div>
                     </div>

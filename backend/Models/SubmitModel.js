@@ -6,11 +6,13 @@ const submitSchema=new mongoose.Schema({
         required:true
     },
     studentId:{
-        type:String,
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'students',
         required:true
     },
     teacherId:{
-        type:String,
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'students',
         required:true
     },
     firstName:{

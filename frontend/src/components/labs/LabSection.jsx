@@ -1,5 +1,6 @@
 import React from 'react'
 import { LabCards } from './LabCards'
+import { Outlet } from 'react-router-dom'
 
 export const LabSection = () => {
   return (
@@ -10,6 +11,7 @@ export const LabSection = () => {
             <LabCards/>
             <LabCards/>
         </div>
+        <Outlet/>
     </>
   )
 }

@@ -3,7 +3,7 @@ import SideSection from '../components/sideSection'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 
-const StudentLayout = () => {
+const Layout = () => {
   return (
     <>
         <div className=''>
@@ -18,4 +18,4 @@ const StudentLayout = () => {
   )
 }
 
-export default StudentLayout
+export default Layout

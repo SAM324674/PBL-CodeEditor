@@ -1,6 +1,6 @@
 // questions.js
 export const questions = [
-    {
+    { id:1,
       question: "Write a function that checks if a number is even or odd.",
       // functionName: "is_even_or_odd",
       testCases: [
@@ -8,7 +8,7 @@ export const questions = [
         { input: [3], expected: "odd" },
       ],
     },
-    {
+    { id:2,
       question: "Write a function that returns the sum of two numbers.",
       // functionName: "sum",
       testCases: [
@@ -16,7 +16,7 @@ export const questions = [
         { input: [10, -2], expected: 8 },
       ],
     },
-    {
+    {   id:3,
         question: "Write a function that sorts an array using Bubble Sort.",
         // functionName: "bubble_sort",
         testCases: [
@@ -28,7 +28,7 @@ export const questions = [
         ],
     },
 
-    {
+    { id:4,
       question: "Write a basic calculator function that performs addition, subtraction, multiplication, and division.",
       functionName: "calculator",
       testCases: [
@@ -46,7 +46,7 @@ export const questions = [
       ],
     },
 
-    {
+    { id:5,
       question: "Write a Python function to count the number of vowels in a string.",
       testCases: [
         { input: ["hello"], expected: 2 },
@@ -55,7 +55,7 @@ export const questions = [
         { input: ["aeiou"], expected: 5 },
       ],
     },
-    {
+    { id:6,
       question: "Write a Python program to sort the characters of a string.",
       testCases: [
         { input: ["hello"], expected: "ehllo" },
@@ -63,7 +63,7 @@ export const questions = [
         { input: ["python"], expected: "hnopty" },
       ],
     },
-    {
+    { id:7,
       question: "Write a Python function to remove duplicate characters from a string.",
       testCases: [
         { input: ["hello"], expected: "helo" },
@@ -72,7 +72,7 @@ export const questions = [
       ],
     },
 
-    {
+    { id:8,
       question: "Write a Python function to list unique characters with their count in a string.",
       testCases: [
         { input: ["hello"], expected: {"h": 1, "e": 1, "l": 2, "o": 1} },
@@ -80,7 +80,7 @@ export const questions = [
         { input: ["OpenAI"], expected: {"O": 1, "p": 1, "e": 1, "n": 1, "A": 1, "I": 1} },
       ],
     },
-    {
+    { id:9,
       question: "Write a Python program to find unique words in a string.",
       testCases: [
         { input: ["hello world hello"], expected: ["hello", "world"] },
@@ -88,7 +88,7 @@ export const questions = [
         { input: ["python python python"], expected: ["python"] },
       ],
     },
-    {
+    { id:10,
       question: "Write a Python program for basic inventory management (add, remove, and check stock levels).",
       testCases: [
         { input: [["add", "apple", 10], ["check", "apple"]], expected: 10 },
