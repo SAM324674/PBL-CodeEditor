@@ -43,6 +43,7 @@ const Dashboard = () => {
   }, [location.pathname]);
 
   //printing all values of localStorage
+  console.log("LOCAL STORAGE");
   for (let key of Object.keys(localStorage)) {
 
     console.log(`${key}: ${localStorage.getItem(key)}`); 

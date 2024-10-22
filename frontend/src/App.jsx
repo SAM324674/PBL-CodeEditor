@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './components/Dashboard';
 import Layout from './pages/Layout';
 import Question from './components/Question';
+import { questions } from './components/questions';
 function App() {
   return (
     <BrowserRouter>
@@ -34,8 +35,8 @@ function App() {
                         <Route path='assignment' element={<Layout/>}/>
                        
                     </Route>
-                    <Route path='labs/CodeEditor' element={<CodeEditor/>}>
-                        <Route path='question/:questionId' element={<Question/>} /> {/* Question route */}
+                    <Route path='labs/CodeEditor/question/' element={<CodeEditor/>}>
+                        <Route path=':questionId' element={<Question/>} /> {/* Question route */}
                     </Route>
                     {/* <Route path='signout' element={<Logout/>}/> */}
                 </Route>

@@ -6,7 +6,7 @@ const {createTokenForUser,validateToken}=require('../services/auth');
 const SignUp=async (req,res)=>{
     const {firstName,lastName,email,password,teacherId}=req.body;
     
-    if(!firstName||!lastName||!email||!password||!teacherId){
+    if(!firstName||!email||!password||!teacherId){
         return res.status(400).json("Required All fields");
     }
     try{

@@ -21,7 +21,7 @@ const submitSchema=new mongoose.Schema({
     },
     lastName:{
         type:String,
-        required:true
+        
     },
     evaluation:{
         type:String,

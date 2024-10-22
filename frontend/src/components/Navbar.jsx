@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { IoNotificationsOutline } from "react-icons/io5";
-import {useLocation} from 'react-router-dom'
+import {useLocation, useParams} from 'react-router-dom'
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineMenu } from "react-icons/md";
 const Navbar = (props) => {
   const {isToggleQuestion,handleToggleQuestion,setIsToggleQuestion}=props;
   const location=useLocation();
-  
+  const {id:questionId}=useParams();
   
   //state for conditional navbar rendering 
   const [isNormal,setIsNormal]=useState(true);
   useEffect(()=>{
-    if(location.pathname==='/students/labs/CodeEditor'){
+    if(location.pathname.includes('/students/labs/CodeEditor')){
         setIsNormal(false);
     }
     else{

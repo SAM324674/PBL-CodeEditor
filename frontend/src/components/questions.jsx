@@ -50,7 +50,7 @@ export const questions = [
       question: "Write a Python function to count the number of vowels in a string.",
       testCases: [
         { input: ["hello"], expected: 2 },
-        { input: ["OpenAI"], expected: 3 },
+        { input: ["OpenAI"], expected: 4 },
         { input: ["xyz"], expected: 0 },
         { input: ["aeiou"], expected: 5 },
       ],
@@ -75,9 +75,9 @@ export const questions = [
     { id:8,
       question: "Write a Python function to list unique characters with their count in a string.",
       testCases: [
-        { input: ["hello"], expected: {"h": 1, "e": 1, "l": 2, "o": 1} },
-        { input: ["banana"], expected: {"b": 1, "a": 3, "n": 2} },
-        { input: ["OpenAI"], expected: {"O": 1, "p": 1, "e": 1, "n": 1, "A": 1, "I": 1} },
+        { input: ["hello"], expected: {'h': 1, 'e': 1, 'l': 2, 'o': 1} },
+        { input: ["banana"], expected: {'b': 1, 'a': 3, 'n': 2} },
+        { input: ["OpenAI"], expected: {'O': 1, 'p': 1, 'e': 1, 'n': 1, 'A': 1, 'I': 1} },
       ],
     },
     { id:9,
