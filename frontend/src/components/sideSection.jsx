@@ -40,11 +40,11 @@ const SideSection = () => {
     const Options=role==='students'?StudentOptions:TeacherOptions;
   return (
     <>
-        <div className='flex w-[20%] h-[95vh] m-0'>
-            <section className='w-full border flex flex-col items-center bg-[#455073] text-white h-[95vh] pt-6'>
+        <div className='flex w-[20%] h-[95vh] m-0 '>
+            <section className='w-full flex flex-col items-center bg-[#2B2D3C] bg-opacity-5 text-white h-[95vh] pt-6'>
                 {/* {location.pathname==='/students'} */}
                 {Options.Icons.map((items,index)=> 
-                <Link to={Options.Links[index]} key={index} className='p-4 w-[100%] hover:bg-[#7284bd]'>
+                <Link to={Options.Links[index]} key={index} className='p-4 w-[100%] hover:bg-[#333333]'>
                     <div className='flex items-center justify-around w-[100%]  '>
                         <div className='w-[1%] '>{items}</div>
                         <p className='w-[70%] '>{Options.Contents[index]}</p>

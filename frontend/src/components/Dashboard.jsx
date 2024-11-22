@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { GridBackgroundDemo } from './ui/GridBackground';
 
 const Dashboard = () => {
   const location = useLocation();
@@ -53,24 +54,27 @@ const Dashboard = () => {
   return (
     <>
 
+      <GridBackgroundDemo>
       {location.pathname === '/teachers/dashboard' && (
-        <div className="text-black border w-full">
+        <div className="border border-[#7289DA] bg-[#2B2D3C] m-5 text-white rounded-lg p-4 flex flex-col gap-4">
           <h1 className='font-bold text-2xl'>Students submitted</h1>
           <ul className='text-black'>
-            <div className='flex border justify-around'>
+            <div className='flex  justify-around border-b-2 border-[#7289DA] text-white'>
                 <h1 className='text-lg font-semibold'>Question No</h1>
                 <h1 className='text-lg font-semibold'>Student Name</h1>
                 <h1 className='text-lg font-semibold'>Marks Obtained</h1>
               </div>
-            {submissions.map((submission, index) => (
-              <li key={index}>
-                  <div className='flex justify-around'>
-                    <div className='w-[20%] border text-center'>{submission.questionId}</div>
-                    <div className='w-[20%] border text-center'>{submission.firstName + " " + submission.lastName}</div>
-                    <div className='w-[20%] border text-center'>{submission.evaluation}</div>
-                  </div>
-              </li>
-            ))}
+            <div className='flex flex-col gap-2 mt-2'>
+              {submissions.map((submission, index) => (
+                <li key={index}>
+                    <div className='flex justify-around border-b border-[#3a4671] text-white'>
+                      <div className='w-[20%]  text-center'>{submission.questionId}</div>
+                      <div className='w-[20%]  text-center'>{submission.firstName + " " + submission.lastName}</div>
+                      <div className='w-[20%]  text-center'>{submission.evaluation}</div>
+                    </div>
+                </li>
+              ))}
+            </div>
           </ul>
         </div>
       )}
@@ -82,6 +86,7 @@ const Dashboard = () => {
       {location.pathname === '/admin/dashboard' && (
         <div>Admin's Dashboard</div>
       )}
+      </GridBackgroundDemo>
     </>
   );
 };
