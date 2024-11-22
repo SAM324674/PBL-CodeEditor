@@ -14,7 +14,7 @@ const Question = () => {
   }
 
   return (
-    <div className='w-[100%] border p-5 bg-[#1e1e1e] h-full text-white overflow-scroll'>
+    <div className='w-[100%] p-5 h-full bg-[#232336] scrollbar text-white overflow-scroll' >
       <div className='flex gap-2'>
           <h1 className='text-2xl font-bold'>{questionId}.</h1>
           <h1 className='text-2xl font-bold'>{question.question}</h1>
@@ -24,7 +24,7 @@ const Question = () => {
        
         {question.testCases.map((testCase, index) => (
            
-          <div key={index} className=' bg-gray-700 bg-opacity-45 rounded-lg p-5'>
+          <div key={index} className=' bg-opacity-45 rounded-lg p-5'>
             <h1 className='font-bold'>Example:{index+1}</h1>
             <div className='flex gap-3'>
               <p className='font-semibold'>Input: </p>

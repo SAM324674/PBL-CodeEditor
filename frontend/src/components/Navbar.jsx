@@ -21,17 +21,22 @@ const Navbar = (props) => {
   },[location.pathname]);
   return (
     <>
-        <div className='w-full border flex gap-40 h-12 bg-white items-center' >
+        <div className='w-full flex gap-40 h-14 bg-[#2B2D3C] bg-opacity-5 backdrop-blur-lg items-center' >
             {/* <div className='w-[20%] border'/> */}
             {isNormal? <div></div>:
-              <button className='border p-3 ml-2 font-semibold text-xl' onClick={handleToggleQuestion}>
-                <MdOutlineMenu/> 
+              <button className='text-white p-3 ml-2 font-semibold text-xl' onClick={handleToggleQuestion}>
+                <MdOutlineMenu /> 
               </button>
             }
-            {isNormal?<h1 className=' w-[13%] text-2xl font-[900] -ml-20'>welcome</h1>:<h1></h1>}
+            {isNormal?<h1 className=' w-[13%] text-2xl text-white font-[900] -ml-20'>welcome</h1>:<h1></h1>}
             
-            <div className='flex border w-[8%] items-center justify-evenly ml-[28rem]'><IoNotificationsOutline />
-                <FaRegUser />
+            <div className='flex w-[8%] items-center text-white justify-evenly ml-[50rem]'>
+                <div className='bg-[#7289DA] p-3 rounded-full'>
+                    <IoNotificationsOutline />
+                </div>
+                <div className='bg-[#7289DA] p-3 rounded-full'>
+                    <FaRegUser />
+                </div>
             </div>
         </div>
     </>

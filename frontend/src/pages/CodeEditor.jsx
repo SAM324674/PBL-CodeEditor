@@ -26,6 +26,17 @@ function CodeEditor() {
       setIsToggleQuestion(!isToggleQuestion);
     }
     // Monaco.languages.register({id:'python'});
+
+    const defaultCode=`
+import sys
+
+# Read all input at once
+input_data = sys.stdin.read().strip().split('\n')
+
+# Create an iterator for input data
+input_iter = iter(input_data)
+input = lambda: next(input_iter)  # Override input function
+    `
   return (<>
     <div className='h-[100vh] overflow-hidden'>
           <Navbar toggle={isToggleQuestion} setIsToggleQuestion={setIsToggleQuestion} handleToggleQuestion={handleToggleQuestion} />
@@ -38,8 +49,7 @@ function CodeEditor() {
               <div className='w-[60%] gap-1 flex flex-col'>
                   <Editor height="80vh"
                   language="python"
-                  defaultValue="import json \n
-                                import sys"
+                  defaultValue={defaultCode}
                   theme="vs-dark"
                   value={value}
                   onChange={(value)=>{

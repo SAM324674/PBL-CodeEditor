@@ -1,15 +1,34 @@
+// import svgToDataUri from "mini-svg-data-uri";
+// import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
 import svgToDataUri from "mini-svg-data-uri";
-import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
-
+ 
+import colors from "tailwindcss/colors";
+import {default as flattenColorPalette} from "tailwindcss/lib/util/flattenColorPalette";
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	darkMode: "class",
 	theme: {
-		// rest of the code
+		fontFamily:{
+			'PressStart2p':["'Press Start 2p'",'sans-serif']
+		}
 	},
 	plugins: [
 		addVariablesForColors,
+		function ({ addUtilities }) {
+			addUtilities({
+				".scrollbar::-webkit-scrollbar": {
+					width: "1px", // Custom scrollbar width
+				},
+				".scrollbar::-webkit-scrollbar-thumb": {
+					backgroundColor: "var(--gray-500)", // Customize thumb
+					borderRadius: "9999px", // Rounded corners
+				},
+				".scrollbar::-webkit-scrollbar-track": {
+					backgroundColor: "var(--gray-200)", // Customize track
+				},
+			});
+		},
 		function ({ matchUtilities, theme }) {
 			matchUtilities(
 				{

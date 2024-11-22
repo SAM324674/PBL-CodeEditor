@@ -1,14 +1,16 @@
+import React from "react";
 
+export function GridBackgroundDemo({ children }) {
+  return (
+    <div className=" w-full bg-[#1E1E2F] relative flex ">
+      {/* Grid background */}
+      <div className="absolute inset-0 bg-[#1E1E2F] bg-opacity-20 bg-grid-white/[0.1] z-0" />
 
-const GridBackground = ({ children }) => {
-    return (
-        (
-            <div className="h-screen w-full bg-white  bg-grid-small-black/[0.2] relative ">
-                <div className="absolute pointer-events-none inset-0  [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-                {children}
-            </div>)
-    );
+      {/* Radial gradient overlay */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none bg-black bg-opacity-100 z-10 [mask-image:radial-gradient(ellipse_at_center,transparent_0.01%,black)]" />
+
+      {/* Content */}
+      <div className="relative z-20 w-full">{children}</div>
+    </div>
+  );
 }
-
-export default GridBackground;
-

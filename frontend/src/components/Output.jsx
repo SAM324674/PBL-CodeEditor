@@ -24,10 +24,10 @@ const Output = (props) => {
 const checkStatus = async (token, retryCount = 5, delay = 2000) => {
     try {
         for (let i = 0; i < retryCount; i++) {
-            const response = await axios.get(`https://judge0-extra-ce.p.rapidapi.com/submissions/${token}`, {
+            const response = await axios.get(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
                 headers: {
                     "x-rapidapi-key": import.meta.env.VITE_Judge0_API_key,
-                    "x-rapidapi-host": "judge0-extra-ce.p.rapidapi.com"
+                    "x-rapidapi-host": "judge0-ce.p.rapidapi.com.com"
                 }
             });
 
@@ -68,17 +68,17 @@ const checkStatus = async (token, retryCount = 5, delay = 2000) => {
         console.log(`Sending input: ${normalizedInput}`); // Debugging line
         console.log(`sourceCode: ${sourceCode}`);
         try {
-            const Submissionresponse=await axios.post("https://judge0-extra-ce.p.rapidapi.com/submissions",
+            const Submissionresponse=await axios.post("https://judge0-ce.p.rapidapi.com/submissions",
                 {
                     source_code:sourceCode,
-                    language_id:28,
+                    language_id:71,
                     stdin:normalizedInput,
                     // expected_output:'odd'
                 },
                  { 
                     headers:{
                         "x-rapidapi-key": import.meta.env.VITE_Judge0_API_key,
-	                    "x-rapidapi-host": "judge0-extra-ce.p.rapidapi.com"
+	                    "x-rapidapi-host": "judge0-ce.p.rapidapi.com"
                     }
                 }
             )
@@ -138,8 +138,14 @@ const checkStatus = async (token, retryCount = 5, delay = 2000) => {
         let evaluation=2
         for(const testCase of testCases){
             const {input,expected}=testCase;
-
-            const token=await RunCode(sourceCode,input);
+            const formattedInput = Array.isArray(input)
+            ? JSON.stringify(input) // For lists, arrays
+            : typeof input === 'object'
+            ? JSON.stringify(input) // For dictionaries/tuples
+            : input.toString(); // For numbers, strings
+    
+            console.log('formatted input:',formattedInput);
+            const token=await RunCode(sourceCode,formattedInput);
 
             const result=await checkStatus(token);
             
@@ -154,7 +160,7 @@ const checkStatus = async (token, retryCount = 5, delay = 2000) => {
             console.log(' String Actual Output:', JSON.stringify(actualOutput).trim().replace(/\n/g, ''));
             console.log(' String Expected Output:', JSON.stringify(expected));
             console.log("actualOutput:",actualOutput,"expected output:",expected);
-            const hasPassed=actualOutput==expected||JSON.stringify(actualOutput).trim().replace(/\n/g, '') === JSON.stringify(expected);
+            const hasPassed=actualOutput.trim()===expected.trim();
             console.log('stderr',result.stderr);
             if(!hasPassed){
                 console.log("the testcase it failed:",testCase)
@@ -212,7 +218,7 @@ const checkStatus = async (token, retryCount = 5, delay = 2000) => {
     return (
         <>
             <div className='h-[20vh]'>
-                <div className='flex items-center justify-end bg-white p-3 gap-5'>
+                <div className='flex items-center justify-end bg-[#1e1e1e] p-3 gap-5'>
                     <button className='bg-blue-400 border text-indigo-950 border-y-green-950 rounded-md p-3 w-[20%] flex items-center justify-evenly' onClick={onExecute}>
                         <FaPlay/>
                         Run Code

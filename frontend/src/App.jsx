@@ -14,15 +14,15 @@ import Dashboard from './components/Dashboard';
 import Layout from './pages/Layout';
 import Question from './components/Question';
 import { questions } from './components/questions';
+import Assignment from './components/students/Assignment';
+import TAssignment from './components/teachers/Assignment';
+// import { GridBackgroundDemo } from './components/ui/GridBackground';
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" >
             <Route index element={<Home />} />
-            
-           
-
             {/* *STUDENT ROUTES* */}
             <Route path="students" element={null}>
                 <Route path='signin' element={<Login/>}/>
@@ -32,7 +32,7 @@ function App() {
                         <Route path='dashboard' element={<Dashboard/>}/>
                         <Route path='labs' element={<LabSection/>}/>
                             {/* <Route index element={<LabSection/>}/> */}
-                        <Route path='assignment' element={<Layout/>}/>
+                        <Route path='assignment' element={<Assignment/>}/>
                        
                     </Route>
                     <Route path='labs/CodeEditor/question/' element={<CodeEditor/>}>
@@ -48,6 +48,7 @@ function App() {
                 <Route element={<PrivateRoute role='teachers'/>}>
                       <Route element={<Layout/>}>
                           <Route path='dashboard' element={<Dashboard/>}/>
+                          <Route path='assignment' element={<TAssignment/>}/>
                       </Route>
                 </Route>
             </Route>
